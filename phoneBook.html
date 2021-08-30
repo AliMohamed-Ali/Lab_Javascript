@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+<script src="">
+var phoneBook ={
+        contacts : [],
+        add:function(){
+            var contactName =prompt("Enter the name you want to add");
+            var contactPhone = prompt("Enter the Phone number");
+            var contact = {
+            name : contactName,
+            phone : contactPhone };
+            phoneBook.contacts.push(contact)
+        },
+        search:function(){
+            var contactName = prompt("Enter the search name");
+            for(var i=0;i<phoneBook.contacts.length;i++){
+                var contact = phoneBook.contacts[i];
+
+                if(contact.name == contactName){
+                    alert(contact.phone)
+                    break;
+                    };
+                }
+        },
+        run:function(){
+            var exit =false
+            do{
+            var op = prompt("What do you want add ,search ,Exit");
+            switch(op){
+                case "add":
+                    phoneBook.add();
+                break;
+                case "search":
+                    phoneBook.search();
+                break;
+                case "exit":
+                case "Exit":
+                    exit =true;
+                break;
+                    }
+                }while(!exit);
+            }
+    }
+
+phoneBook.run();
+</script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        
+    </body>
+</html>
