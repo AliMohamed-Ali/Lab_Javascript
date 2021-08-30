@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script>
+
+
+        //ask the number of values 
+        var ask = Number(prompt("How many number you want to calculate"))
+        var sum =0;
+        var avg = 0;
+        var array = [];
+
+        for(var i = 0 ;i<ask ;i++){
+        var num = Number(prompt("Enter number :"))
+        array.push(num)
+        sum += array[i]
+        avg =sum /ask
+        }
+        alert("the sm of the numbers is :" +sum);
+        alert("the average of the numbers is : "+avg)
+
+
+        </script>
+    <body>
+        
+        
+    </body>
+</html>
