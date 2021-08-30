@@ -5,10 +5,15 @@
     <title></title>
   </head>
   <body>
+   
     <script>
+    /*create calcultor with javascript*/
+    // take first number 
       var num1= Number(prompt("Enter First Number Please:"))
+    // take second number 
       var num2= Number(prompt("Enter Second Number Please:"))
       var result;
+    // take operation sign  
       var op = prompt("Enter your operation Please (+,-,*,/)")
 
     switch (op) {
@@ -27,8 +32,8 @@
       result="Check your operation Please"
     }
     alert(result);
-    var state=true;
-    while (state) {
+    var flag=true;
+    while (flag) {
       var num1= Number(prompt("Enter First Number Please:"))
       var num2=result;
       var op = prompt("Enter your operation Please (+,-,*,/)")
@@ -48,11 +53,11 @@
         result="Check your operation Please"
       }
       alert(result)
-      state = prompt("Do you want to Continue ? (Y/N)")
-      if (state=='Y') {
-        state = true
+      flag = prompt("Do you want to Continue ? (Y/N)")
+      if (flag=='Y') {
+        flag = true
       }else {
-        state = false
+        flag = false
       }
     }
 
