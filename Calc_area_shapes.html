@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script>
+var shapes ={
+    circle :function(){
+        var radius = Number(prompt("Enter radius of Circle ??"))
+        result = radius * 3.14
+        return alert("The area of Circle is :"+result)
+    },
+    triangle:function(){
+        var height = Number(prompt("Enter height of triangle ??"))
+        var base = Number(prompt("Enter Base of triangle ??"))
+
+        result = .5 * height * base
+        return alert("The area of Triangle is :"+result)
+    },
+    square:function(){
+        var a = Number(prompt("Enter the length of side ??"));
+        result = a*a
+        return alert(result);
+    },
+    rectangle:function(){
+        var l = Number(prompt("Enter the length of rectangle ??"));
+        var w = Number(prompt("Enter the width of rectangle ??"));
+        result = w*l 
+        return alert("the area of Rectangle :" +result)
+    },
+    Parallelogram:function(){
+        var height = Number(prompt("Enter height of Parallelogram ??"))
+        var base = Number(prompt("Enter Base of Parallelogram ??"))
+        result =  height * base
+        return alert("The area of Parallelogram is :"+result)
+    },
+    Trapezium:function(){
+        var a = Number(prompt("Enter a(parallel sides) of Trapezium ??"))
+        var b = Number(prompt("Enter b(parallel sides) of Trapezium ??"))
+        var h = Number(prompt("Enter height of Trapezium ??"))
+        result =  .5 *(a+b) * h
+        return alert("The area of Trapezium is :"+result)
+    },
+    Ellipse:function(){
+        var a = Number(prompt("Enter a(½ minor axis) of Ellipse ??"))
+        var b = Number(prompt("Enter b(½ major axis) of Ellipse ??"))
+        result =  .3.14*a*b
+        return alert("The area of Ellipse is :"+result)
+        
+    }
+
+    run:function(){
+        var flag =false;
+        do{
+        var shape = prompt("Enter the shape of area (circle , triangle, Square ,Rectangle , Parallelogram ,Trapezium , Ellipse )??")
+        switch(shape){
+        case "circle":
+        shapes.circle()
+        break;
+        case "triangle":
+            shapes.triangle()
+        break;
+        case "Square":
+        shapes.square()
+        break;
+        case "Rectangle":
+        shapes.rectangle()
+        break;
+        case "Parallelogram":
+        shapes.Parallelogram()
+        break;
+        case "Trapezium":
+        shapes.Trapezium()
+        break;
+        case "Ellipse":
+        shapes.Ellipse()
+        break;
+        default:
+        alert("Thanks")
+        flag =true
+        break;
+            }
+        }while(!flag)
+
+        }
+
+}
+shapes.run();
+
+
+//Ask the user to enter the name of the shape
+
+
+
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>
