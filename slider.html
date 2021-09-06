@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider{
+            width:860px;
+            height: 600px;
+            position: absolute;
+            left:50%;
+            transform: translate(-50%,0);
+        }
+        .slider .img{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+        }
+        .slider img.pre{
+            left:0px;
+            top:50px;
+            opacity: 0.7;
+        }
+        .slider img.next{
+            /*transform: translate(-340px,0);*/
+            left:460px;
+            top:50px;
+            opacity: 0.7;
+        }
+        .slider img.current{
+            width:500px;
+            height: 500px;
+            left:170px;
+            z-index: 100;
+            /*transform: translate(-170px,0);*/
+        }
+        .slider .btn{
+            position: absolute;
+            width:50px;
+            height:50px;
+            border-radius: 50%;
+            background-color: rgb(167, 9, 4);
+            color: white;
+            top:235px;
+            border:3px solid white;
+            cursor: pointer;
+        }
+        .slider div.next{
+            right:25px;
+            line-height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+        .slider div.pre{
+            left:25px;
+            line-height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+        .slider .footer{
+            position: absolute;
+            top:520px;
+            max-height: 20px;
+            max-width: 860px;
+            left:50%;
+            transform: translate(-50%,0);
+        }
+        .slider .footer .fbtn{
+            cursor: pointer;
+            width:30px;
+            height: 10px;
+            background-color: gray;
+            display: inline-block;
+            opacity: 0.5;
+        }
+        .slider .footer .active{
+            opacity: 1;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div  class="slider">
+            <img class="img pre" src="">
+            <img class="img current" src="">
+            <img class="img next" src="">
+            <div class="btn next">></div>
+            <div class="btn pre"><</div>
+            <div class="footer">
+            <!-- <div class="fbtn"> </div>
+            <div class="fbtn"> </div>
+            <div class="fbtn"> </div>
+            <div class="fbtn"> </div>
+            <div class="fbtn"> </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var imags =["car1.jpg","car2.jpg","car3.jpg","car4.jpg","car6.jpg","car7.jpg"]
+        var imgPre = document.querySelector(".slider img.pre");
+        var imgCurrent = document.querySelector(".slider img.current");
+        var imgNext = document.querySelector(".slider img.next");
+        
+        var currentIndex = 0;
+
+        function reloadImgs(){
+            imgCurrent.src = imags[currentIndex]
+            imgNext.src = imags[fixIndex(currentIndex + 1 )]
+            imgPre.src = imags[fixIndex(currentIndex - 1)]
+            updateFooter()
+        }
+        function initFooter(){
+            var footerDiv = document.querySelector(".slider .footer")
+            var htmlArr = imags.map(function(item,index){
+                return "<div myindex='"+index +" 'class='fbtn'> </div> "
+            });
+            var httmlCode = htmlArr.join("");
+            footerDiv.innerHTML = httmlCode;
+            var footerBtns = document.querySelectorAll(".slider .footer .fbtn");
+            for(var i =0;i<footerBtns.length;i++){
+                footerBtns[i].addEventListener("click",function(e){
+                    currentIndex = Number(e.target.getAttribute("myindex"));
+                    reloadImgs();
+                })
+
+        };
+    }
+        
+    
+        initFooter();
+        reloadImgs();
+
+        var sliderNextBtn = document.querySelector(".slider div.next");
+        console.log(sliderNextBtn);
+        sliderNextBtn.addEventListener("click" , function(e){
+            currentIndex= currentIndex + 1;
+            currentIndex = fixIndex(currentIndex);
+            reloadImgs();
+
+        });
+        var sliderPreBtn = document.querySelector(".slider div.pre");
+        console.log(sliderPreBtn)
+        sliderPreBtn.addEventListener("click" , function(e){
+            currentIndex--;
+            currentIndex = fixIndex(currentIndex);
+            reloadImgs();
+
+        });
+        function updateFooter(){
+            var footerBtns = document.querySelectorAll(".slider .footer .fbtn");
+            for(var i=0 ; i<footerBtns.length;i++){
+                footerBtns[i].classList.remove("active")
+            }
+            footerBtns[currentIndex].classList.add("active")
+        }
+        function fixIndex(index){
+            if(index <0){
+                index = imags.length + index;
+            }else if(index >= imags.length){
+                index =0;    
+            }
+            return index
+        }
+    
+    </script>
+</body>
+</html>
