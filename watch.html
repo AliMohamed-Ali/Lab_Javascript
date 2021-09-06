@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+        .container{
+            width: 400px;
+            height: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border: blueviolet solid 2px;
+            background-color: lightskyblue;
+            text-align: center;
+        }
+        .container input{
+            width: 80px;
+            margin: 20px;
+            margin-top: 5px;
+            border: blue dashed 1px;
+
+        }
+        .container button{
+            cursor: pointer;
+            background-color: blue;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .container .end{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="watch"></h1>
+    <div class="container">
+        <p>Set your Alarm</p>
+        <input type="number"  id="hour" placeholder="Hour">
+        <input type="number"  id="minute" placeholder="minute">
+        <input type="number"  id="second" placeholder="second">
+        <button onclick="start()">Start</button>
+        <button class="end" onclick="rest()">End</button>
+    </div>
+
+    <script>
+       setInterval(function(){
+        var currentTime = new Date()
+        document.getElementById("watch").innerHTML = currentTime.toLocaleTimeString()
+       }, 1000);
+
+    var idTime ;
+        // var str = document.getElementById("str")
+        // console.log(str)
+        // str.addEventListener("click",function(e){
+        //     var myHour = document.getElementById("hour").value
+        //     var myMinute = document.getElementById("minute").value
+        //     var mySecond = document.getElementById("second").value
+        //     var result = (myHour*60*60*1000)+(myMinute*60*1000)+(mySecond*1000)
+        //     setTimeout(function(){
+        //         alert("It's Time Out")
+        //     },result)
+            
+        //     console.log(result)
+        
+        // })
+            // var myHour = document.getElementById("hour").value
+            // var myMinute = document.getElementById("minute").value
+            // var mySecond = document.getElementById("second").value
+            // var result = (myHour*60*60*1000)+(myMinute*60*1000)+(mySecond*1000)
+        // document.getElementById("str").addEventListener("click",function(){
+            
+        //     console.log("result")
+        //     idTime = setTimeout(function(){
+        //         alert("It's Time Out")
+        //     },result)
+        
+        // })
+        // rest.addEventListener("click",function(){
+           
+        //     clearTimeout(idTime)
+        
+        // })
+
+        
+        function start(){
+            // event.preventDefault()
+        
+        var myHour = document.getElementById("hour").value
+        var myMinute = document.getElementById("minute").value
+        var mySecond = document.getElementById("second").value
+        var result = (myHour*60*60*1000)+(myMinute*60*1000)+(mySecond*1000)
+        console.log(result)
+            idTime = setTimeout(function(){
+                alert("It's Time Out")
+            },result)
+        }
+
+        function rest(){
+            // event.preventDefault()
+            clearTimeout(idTime)
+        }
+
+
+    </script>
+</body>
+</html>
