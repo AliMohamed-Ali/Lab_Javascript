@@ -46,8 +46,14 @@ class Rectangle extends shape{
     type=null;
     constructor(width,height){
         super();
+        if(typeof width === "number"){
         this.width = width;
         this.height = height;
+    }else{
+        this.width = width.width;
+        this.height = width.height;
+    }
+        
         
 
     }
@@ -81,8 +87,13 @@ class Oval extends shape{
     circum=0;
     constructor(a,b){
         super();
+        if(typeof a === "number"){
         this.a=a;
         this.b=b;
+    }else{
+        this.a=a.a;
+        this.b=a.b;
+    }
     }
     
     GetArea(){
@@ -127,12 +138,17 @@ let newSquare =new Square(5)
     newarea.add(newSquare)
 let newRectangle = new Rectangle(10,5)
 newarea.add(newRectangle)
+let newOval = new Oval(5,10)
+newarea.add(newOval)
 let newCircle = new Circle(5)
 newarea.add(newCircle)
-let newOval = new Oval(10,5)
+let newCircle2 = new Circle(newOval)
+newarea.add(newCircle)
+let newOval2 = new Oval(newOval)
 newarea.add(newOval)
+let newSquare2 =new Square(newRectangle)
+    newarea.add(newSquare)
 newarea.log()
-
 
 
 
