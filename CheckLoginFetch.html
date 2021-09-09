@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <style>
+        body {
+            background-color: aquamarine;
+        }
+        
+        .container {
+            width: 300px;
+            height: 30%;
+            background-color: lightskyblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: lightskyblue solid 2px;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+        }
+         
+        .inputForm {
+            display: block;
+            margin: 20px;
+            margin-left: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <label class="inputForm" for="name">UserName :</label>
+            <input class="inputForm" type="text" id="name">
+            <label class="inputForm" for="password">Password :</label>
+            <input class="inputForm" type="password" id="password">
+            <button class="inputForm" onclick="check()">Log In</button>
+        </form>
+        <p id="msg"></p>
+
+    </div>
+
+
+    <script>
+        
+        function check() {
+        event.preventDefault();
+        var uname = document.getElementById("name")
+        var upassword = document.getElementById("password")
+        var succ  = document.querySelector("#msg")
+        var msgBody = {
+            email:uname.value,
+            password : upassword.value
+        };
+        var url = "https://reqres.in/api/login";
+        fetch(url,{
+            method:"POST",
+            headers:{
+                'content-type':'application/JSON'
+            },
+            body:JSON.stringify(msgBody)
+            
+        }).then(function(reply){
+            return reply.json();
+        }).then(function(obj){
+            if(obj.token){
+                succ.innerHTML  = "Successful Login"
+            }else{
+                succ.innerHTML  = obj.error
+            }
+
+        })
+        uname.value = ""
+        upassword.value = ""
+    }
+    
+
+/*
+        function check() {
+            event.preventDefault();
+            console.log(uname.value)
+            console.log(upassword.value)
+            console.log("msg", msg)
+            if ((uname.value === "admin") && (upassword.value === "123")) {
+                msg.innerHTML = "Ok Go In"
+            } else {
+                msg.innerHTML = "Wron Pass , Try Again"
+            }
+
+        }
+        */
+
+
+
+        
+    </script>
+</body>
+
+</html>
