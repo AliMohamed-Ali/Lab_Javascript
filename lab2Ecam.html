@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="customprompt" style="display: none;position: absolute;left:50%;top:50%;transform: translate(-50%,-50%);border:3px solid gray;padding:50px">
+        <h1 id="msgh1"></h1>
+        <input id="userinput" type="text" />
+        <button id="okbtn" >Ok</button>
+        <button id="cancel" >Cancel</button>
+    </div>
+
+
+
+    <button onclick="getuserName();"> get user name</button>
+    <script>
+        function myprompt(msg){
+            return (new Promise(function(res,reject){
+                console.log(res);
+                customprompt.style.display="block";
+                msgh1.innerHTML = msg;
+                okbtn.onclick = function(){
+                    //resolve(userinput.value);
+                    res("welcome "+userinput.value)
+                }
+                cancel.onclick =function(){
+                    res("Please Enter Your Name")
+                }
+            }))
+        }
+        async function getuserName(){
+            let username = await myprompt("please enter user name");
+            alert(username);
+            customprompt.style.display="none";
+        }
+    </script>
+
+</body>
+</html>
